@@ -5,7 +5,7 @@ class UserSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.deepPurple,
         title: Text('Settings',
           textAlign: TextAlign.center,
           style:TextStyle(fontWeight: FontWeight.bold),

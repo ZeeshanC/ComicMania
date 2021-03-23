@@ -25,8 +25,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Settings",
             icon: "assets/icons/Settings.svg",
-            press: () {
-              Navigator.of(context).pushReplacementNamed(UserSettings.routeName);
+            press: () async {
+              //Navigator.of(context).pushReplacementNamed(UserSettings.routeName);
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> UserSettings()));
             },
           ),
           ProfileMenu(
