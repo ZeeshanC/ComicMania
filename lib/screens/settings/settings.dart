@@ -1,3 +1,4 @@
+import 'package:ComicMania/constants.dart';
 import 'package:flutter/material.dart';
 class UserSettings extends StatelessWidget {
   static String routeName = "/settings";
@@ -5,7 +6,7 @@ class UserSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: kPrimaryColor,
         title: Text('Settings',
           textAlign: TextAlign.center,
           style:TextStyle(fontWeight: FontWeight.bold),

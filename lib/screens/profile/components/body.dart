@@ -1,3 +1,4 @@
+import 'package:ComicMania/screens/accountpage/accountpage.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/screens/settings/settings.dart';
 import 'profile_menu.dart';
@@ -15,7 +16,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
+            press: () async {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+            },
           ),
           ProfileMenu(
             text: "Notifications",
