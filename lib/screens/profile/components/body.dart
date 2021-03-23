@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:ComicMania/screens/settings/settings.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
@@ -25,7 +25,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Settings",
             icon: "assets/icons/Settings.svg",
-            press: () {},
+            press: () {
+              Navigator.of(context).pushReplacementNamed(UserSettings.routeName);
+            },
           ),
           ProfileMenu(
             text: "Help Center",

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
 import 'package:ComicMania/components/default_button.dart';
@@ -6,14 +7,14 @@ import 'package:provider/provider.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import 'package:ComicMania/models/authentication.dart';
-
+import 'package:ComicMania/screens/home/home_screen.dart';
 class SignUpForm extends StatefulWidget {
   @override
   _SignUpFormState createState() => _SignUpFormState();
 }
-
+final _formKey = GlobalKey<FormState>();
 class _SignUpFormState extends State<SignUpForm> {
-  final _formKey = GlobalKey<FormState>();
+
   String email;
   String password;
   // ignore: non_constant_identifier_names
@@ -22,11 +23,29 @@ class _SignUpFormState extends State<SignUpForm> {
   Map<String, String> _authData = {
     'email': '',
     'password':'',
-    'confirm_password':'',
-};
+    };
   final List<String> errors = [];
+  void _showErrorDialog(String msg)
+  {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text('An Error Occured'),
+          content: Text(msg),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Okay'),
+              onPressed: (){
+                Navigator.of(ctx).pop();
+              },
+            )
+          ],
+        )
+    );
+  }
   Future<void> _submit() async
   {
+
     if(!_formKey.currentState.validate())
     {
       return;
@@ -34,13 +53,13 @@ class _SignUpFormState extends State<SignUpForm> {
     _formKey.currentState.save();
 
     try{
-      await Provider.of<Authentication>(context, listen: false).signUp(_authData['email'],_authData['password'],_authData['cconform_password']);
-      //Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']);
+      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
 
     } catch(error)
     {
       var errorMessage = 'Authentication Failed. Please try again later.';
-      print(errorMessage);
+      _showErrorDialog(errorMessage);
     }
 
   }
@@ -62,43 +81,49 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        children: [
-          buildEmailFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildPasswordFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildConformPassFormField(),
-          FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(40)),
-          DefaultButton(
-            text: "Continue",
-            press: () async {
-              _submit();
-            }
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(value:Authentication(),)
+        ],
+        child: Column(
+          children: [
+            buildEmailFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            buildPasswordFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            buildConformPassFormField(),
+            FormError(errors: errors),
+            SizedBox(height: getProportionateScreenHeight(40)),
+            DefaultButton(
+              text: "Continue",
+              press: () async {
+                _submit();
+              }
     ),
   ],
-          ),
+            ),
+      ),
       );
   }
 
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => _authData['conform_password'] = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
+      onSaved: (newValue) =>conform_password = newValue,
+      onChanged: (newValue) {
+        if (newValue.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.isNotEmpty &&_authData['password'] ==  _authData['conform_password']) {
+        }  if (newValue.isNotEmpty &&_authData['password'] ==  conform_password) {
           removeError(error: kMatchPassError);
+          print(_authData['password']);
         }
-        _authData['conform_password'] = value;
+        conform_password = newValue;
       },
-      validator: (value) {
-        if (value.isEmpty) {
+      validator: (newValue) {
+        if (newValue.isEmpty) {
           addError(error: kPassNullError);
           return "";
-        } else if ((password != value)) {
+        } else if ((_authData['password'] != newValue)) {
           addError(error: kMatchPassError);
           return "";
         }
