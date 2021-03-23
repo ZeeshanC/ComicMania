@@ -1,6 +1,5 @@
 import 'package:ComicMania/components/default_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
 import 'package:ComicMania/components/form_error.dart';
@@ -76,7 +75,7 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
             text:"Login",
             press: () async {
-              User user;
+              //User user;
 
               
               if (_formKey.currentState.validate()) {
