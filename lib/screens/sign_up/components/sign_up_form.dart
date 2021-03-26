@@ -14,9 +14,10 @@ class SignUpForm extends StatefulWidget {
 }
 final _formKey = GlobalKey<FormState>();
 class _SignUpFormState extends State<SignUpForm> {
-
+  static final RegExp nameRegExp = RegExp('[a-zA-Z]');
   String email;
   String password;
+  String name;
   // ignore: non_constant_identifier_names
   String conform_password;
   bool remember = false;
@@ -87,6 +88,8 @@ class _SignUpFormState extends State<SignUpForm> {
         ],
         child: Column(
           children: [
+            buildNameFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
             buildEmailFormField(),
             SizedBox(height: getProportionateScreenHeight(30)),
             buildPasswordFormField(),
@@ -95,7 +98,7 @@ class _SignUpFormState extends State<SignUpForm> {
             FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(40)),
             DefaultButton(
-              text: "Continue",
+              text: "Sign Up",
               press: () async {
                 _submit();
               }
@@ -204,5 +207,40 @@ class _SignUpFormState extends State<SignUpForm> {
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
       ),
     );
+
+  }
+  TextFormField buildNameFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      onSaved: (newValue) => name = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } else if (RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%\s-]').hasMatch(value)) {
+          removeError(error: kInvalidEmailError);
+        }
+        name = value;
+      },
+
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Please enter name";
+        } else
+        if (!RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%\s-]').hasMatch(value)) {
+          //addError(error: kInvalidEmailError);
+          return "enter valid name";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Name",
+        hintText: "Enter your name",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+      ),
+    );
   }
 }
+
