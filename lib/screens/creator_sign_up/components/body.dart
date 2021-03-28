@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ComicMania/components/creator_no_account_text .dart';
-import '../../../size_config.dart';
-import 'sign_form.dart';
+import 'package:ComicMania/constants.dart';
+import 'package:ComicMania/size_config.dart';
+
+import 'sign_up_form.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -15,27 +16,21 @@ class Body extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04),
+                SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
+                Text("Creator Sign UP", style: headingStyle),
                 Text(
-                  "Creator Login",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: getProportionateScreenWidth(28),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  "Sign in with your email and password",
+                  "Complete your details",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
-                CreatorSignForm(),
+                CreatorSignUpForm(),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                NoAccountText(),
+                Text(
+                  'By continuing your confirm that you agree \nwith our Term and Condition',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.caption,
+                )
               ],
             ),
           ),
