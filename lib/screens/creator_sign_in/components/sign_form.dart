@@ -1,4 +1,5 @@
 import 'package:ComicMania/components/default_button.dart';
+import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
@@ -7,16 +8,16 @@ import 'package:ComicMania/helper/keyboard.dart';
 import 'package:ComicMania/screens/forgot_password/forgot_password_screen.dart';
 import 'package:ComicMania/screens/login_success/login_success_screen.dart';
 //import 'package:firebase/firebase.dart';
-import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
+
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class SignForm extends StatefulWidget {
+class CreatorSignForm extends StatefulWidget {
   @override
   _SignFormState createState() => _SignFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _SignFormState extends State<CreatorSignForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth =FirebaseAuth.instance;
   String email;
@@ -64,20 +65,7 @@ class _SignFormState extends State<SignForm> {
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
                 child: Text(
-                  "Forgot Password /",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              )
-            ],
-          ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
-              crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new CreatorSignInScreen())),
-                child: Text(
-                  " Creator Login",
+                  "Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               )

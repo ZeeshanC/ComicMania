@@ -9,7 +9,7 @@ import 'package:ComicMania/screens/otp/otp_screen.dart';
 import 'package:ComicMania/screens/profile/profile_screen.dart';
 import 'package:ComicMania/screens/sign_in/sign_in_screen.dart';
 import 'package:ComicMania/screens/splash/splash_screen.dart';
-
+import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
 import 'screens/sign_up/sign_up_screen.dart';
 
 // We use name route
@@ -26,4 +26,5 @@ final Map<String, WidgetBuilder> routes = {
   DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
+  CreatorSignInScreen.routeName:(context)=> CreatorSignInScreen(),
 };
