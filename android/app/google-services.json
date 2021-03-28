@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "149962349828",
+    "firebase_url": "https://comicmania-fc715-default-rtdb.firebaseio.com",
     "project_id": "comicmania-fc715",
     "storage_bucket": "comicmania-fc715.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "149962349828-ogm93nr223a7jpu4t254cgn36oc8b04n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.Comicmania",
+            "certificate_hash": "35ba5663dd7df03551b4a1df5d12ee47c243ff32"
+          }
+        },
         {
           "client_id": "149962349828-8kplc8ha42c0vlpt6g1d20h28i3sv9t9.apps.googleusercontent.com",
           "client_type": 3

@@ -1,5 +1,6 @@
 import 'package:ComicMania/components/default_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
 import 'package:ComicMania/components/form_error.dart';
@@ -10,13 +11,15 @@ import 'package:ComicMania/screens/login_success/login_success_screen.dart';
 import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
-
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:ComicMania/bloc/auth_bloc.dart';
 class SignForm extends StatefulWidget {
   @override
   _SignFormState createState() => _SignFormState();
 }
 
 class _SignFormState extends State<SignForm> {
+  var authBloc =new AuthBloc();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth =FirebaseAuth.instance;
   String email;
@@ -106,6 +109,23 @@ class _SignFormState extends State<SignForm> {
               }
             },
           ),
+          SizedBox(height: getProportionateScreenHeight(20)),
+          Column(
+            children: [
+              Row(
+
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                //Center Row contents horizontally,
+                children: [
+                  SignInButton(Buttons.GoogleDark,text: 'Sign In', onPressed: ()=> { authBloc.loginGoogle(),
+                  Navigator.pushNamed(context, LoginSuccessScreen.routeName)
+                  },
+                  ),
+                ],
+              ),
+            ],
+          )
         ],
       ),
     );
@@ -175,5 +195,6 @@ class _SignFormState extends State<SignForm> {
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
       ),
     );
+
   }
 }

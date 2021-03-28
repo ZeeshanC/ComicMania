@@ -1,10 +1,13 @@
 import 'package:ComicMania/screens/accountpage/accountpage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/screens/settings/settings.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
-
+import 'package:ComicMania/screens/sign_in/sign_in_screen.dart';
+import 'package:ComicMania/bloc/auth_bloc.dart';
 class Body extends StatelessWidget {
+  var authBloc =new AuthBloc();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,7 +44,11 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () async{
+              authBloc.logout();
+              FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SignInScreen()));
+            },
           ),
         ],
       ),
