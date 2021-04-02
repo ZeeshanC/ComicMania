@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../size_config.dart';
 import 'categories.dart';
 import 'home_header.dart';
-
+import 'comiclist.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,10 @@ class Body extends StatelessWidget {
             HomeHeader(),
             SizedBox(height: getProportionateScreenWidth(10)),
             Categories(),
-            SizedBox(height: getProportionateScreenWidth(30)),
-            SizedBox(height: getProportionateScreenWidth(30)),
+            SizedBox(height: getProportionateScreenWidth(0)),
+            ComicList(),
+            SizedBox(height: getProportionateScreenWidth(20)),
+            ComicList(),
           ],
         ),
       ),

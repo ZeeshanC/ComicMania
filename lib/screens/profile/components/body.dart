@@ -46,8 +46,10 @@ class Body extends StatelessWidget {
             icon: "assets/icons/Log out.svg",
             press: () async{
               authBloc.logout();
-              FirebaseAuth.instance.signOut();
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SignInScreen()));
+              //FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => SignInScreen()));
+              //Navigator.popUntil(context, ModalRoute.withName("SignInScreen"));
+              //Navigator.of(context).pushAndRemoveUntil(SignInScreen.routeName,);
             },
           ),
         ],

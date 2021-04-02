@@ -1,4 +1,5 @@
 import 'package:ComicMania/screens/login_success/login_success_screen.dart';
+import 'package:ComicMania/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -32,5 +33,6 @@ class AuthBloc {
 
   logout() {
     authService.logout();
+
   }
 }

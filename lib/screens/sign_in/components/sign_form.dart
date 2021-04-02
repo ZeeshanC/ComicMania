@@ -103,7 +103,7 @@ class _SignFormState extends State<SignForm> {
                   setState(() {
                     user= UserCredential.user;
                   });
-                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                  Navigator.pushReplacementNamed(context, LoginSuccessScreen.routeName);
                 });
 
               }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ComicMania/components/default_button.dart';
 import 'package:ComicMania/screens/home/home_screen.dart';
 import 'package:ComicMania/size_config.dart';
-
+import 'package:ComicMania/screens/home/components/categories.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

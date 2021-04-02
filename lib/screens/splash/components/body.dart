@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
                       text: "Continue",
                       press: () async {
                         await Firebase.initializeApp();
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        Navigator.pushReplacementNamed(context, SignInScreen.routeName);
                       },
                     ),
                     Spacer(),

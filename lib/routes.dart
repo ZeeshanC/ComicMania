@@ -12,6 +12,7 @@ import 'package:ComicMania/screens/splash/splash_screen.dart';
 import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
 import 'screens/sign_up/sign_up_screen.dart';
 import 'screens/creator_sign_up/sign_up_screen.dart';
+//import 'screens/home/components/categories.dart';
 // We use name route
 // All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
@@ -28,4 +29,6 @@ final Map<String, WidgetBuilder> routes = {
   ProfileScreen.routeName: (context) => ProfileScreen(),
   CreatorSignInScreen.routeName:(context)=> CreatorSignInScreen(),
   CreatorSignUpScreen.routeName:(context)=>CreatorSignUpScreen(),
+  //Zeeshan.routeName:(context)=>Zeeshan(),
+
 };
