@@ -1,3 +1,5 @@
+import 'package:ComicMania/screens/home/home_screen.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/routes.dart';
 import 'package:ComicMania/screens/splash/splash_screen.dart';
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'ComicMania',
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
@@ -20,4 +22,5 @@ class MyApp extends StatelessWidget {
       routes: routes,
     );
   }
+
 }

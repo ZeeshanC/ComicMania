@@ -1,3 +1,4 @@
+import 'package:ComicMania/screens/notification/notification.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
@@ -25,7 +26,9 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 0,
-            press: () {},
+            press: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> DropDownNotification()));
+            },
           ),
         ],
       ),

@@ -7,7 +7,7 @@ class ComicList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder(
-        future: FirebaseFirestore.instance.collection('user').get(),
+        future: FirebaseFirestore.instance.collection('Solo').get(),
         builder: (context, snapshot){
           if(snapshot.hasData && snapshot.connectionState == ConnectionState.done)
           {
@@ -15,11 +15,11 @@ class ComicList extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: snapshot.data.docs.length,
                 itemBuilder: (context, index){
-                  DocumentSnapshot user = snapshot.data.docs[index];
+                  DocumentSnapshot Solo = snapshot.data.docs[index];
                   return Card(
                     child: ListTile(
-                      leading: Text('${user.data()['name']}'),
-                      trailing: Text('${user.data()['email']}'),
+                      leading: Text('${Solo.data()['photo']}'),
+                      trailing: Text('${Solo.data()['Name']}'),
                     ),
                   );
                 }

@@ -1,3 +1,5 @@
+import 'package:ComicMania/screens/login_success/login_success_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
@@ -54,8 +56,19 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
     _formKey.currentState.save();
 
     try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']);
-      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']).then((value) {
+        FirebaseFirestore.instance.collection('Creator').doc().set(
+            {
+              "name": name,
+              "email": _authData['email'],
+              "password":_authData['password'],
+            }
+        );
+        UserCredential user;
+        user.user.updateProfile(displayName: name);
+        print("data sent");
+        Navigator.of(context).pushReplacementNamed(LoginSuccessScreen.routeName);
+      });
 
     } catch(error)
     {
@@ -217,7 +230,7 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
         } else if (RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%\s-]').hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          //removeError(error: kInvalidEmailError);
         }
         name = value;
       },
@@ -225,10 +238,6 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
       validator: (value) {
         if (value.isEmpty) {
           return "Please enter name";
-        } else
-        if (!RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%\s-]').hasMatch(value)) {
-          //addError(error: kInvalidEmailError);
-          return "enter valid name";
         }
         return null;
       },

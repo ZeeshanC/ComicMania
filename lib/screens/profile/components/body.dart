@@ -1,4 +1,5 @@
 import 'package:ComicMania/screens/accountpage/accountpage.dart';
+import 'package:ComicMania/screens/notification/notification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/screens/settings/settings.dart';
@@ -26,7 +27,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Notifications",
             icon: "assets/icons/Bell.svg",
-            press: () {},
+            press: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> DropDownNotification()));
+            },
           ),
           ProfileMenu(
             text: "Settings",
