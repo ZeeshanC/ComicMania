@@ -1,3 +1,5 @@
+import 'package:ComicMania/screens/comicss/comic.dart';
+import 'package:ComicMania/screens/comicss/solo/chap1/chap1.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ComicMania/screens/cart/cart_screen.dart';
 import 'package:ComicMania/screens/complete_profile/complete_profile_screen.dart';
@@ -30,5 +32,6 @@ final Map<String, WidgetBuilder> routes = {
   CreatorSignInScreen.routeName:(context)=> CreatorSignInScreen(),
   CreatorSignUpScreen.routeName:(context)=>CreatorSignUpScreen(),
   //Zeeshan.routeName:(context)=>Zeeshan(),
-
+  Comics.routeName:(context)=>Comics(),
+  chap1.routeName:(context)=>chap1(),
 };
