@@ -26,16 +26,32 @@ class chap1 extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    final _itemExtent = 56.0;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: Text("Chapter 1"),
       ),
-      body: ListView.builder(
-          itemBuilder: (BuildContext ctx,int index){
-            return Image.network(a[index]);
-          },
-        itemCount: a.length,
+      body: SingleChildScrollView(
+        reverse: false,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                controller: ScrollController(initialScrollOffset: _itemExtent * 401),
+                shrinkWrap: true,
+                  itemBuilder: (BuildContext ctx,int index){
+                    return Image.network(a[index]);
+                  },
+                itemCount: a.length,
+              ),
+            ),
+            FlatButton(
+                onPressed:()=> print("Next Chap"),
+                child: Text('Next'))
+          ],
+        ),
       ),
     );
   }
