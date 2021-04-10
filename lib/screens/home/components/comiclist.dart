@@ -69,12 +69,6 @@ class ComicList extends StatelessWidget {
                   alignment: Alignment(-60,0),
 
                   ),
-                  IconButton(
-                  icon: Icon(Icons.add_comment),
-                  color: Colors.lightBlue,
-                  alignment: Alignment(-60, 0),
-                  onPressed: null,
-                  ),
                   Solo.data()['photo']!= null ? IconButton(icon: Icon(Icons.book), onPressed: null,  color: Colors.black,
                   alignment: Alignment(10,0),): null,
                   ],
