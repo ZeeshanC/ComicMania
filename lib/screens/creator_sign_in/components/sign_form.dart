@@ -1,5 +1,6 @@
 import 'package:ComicMania/components/default_button.dart';
 import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
+import 'package:ComicMania/screens/creator_upload/upload.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
@@ -88,7 +89,7 @@ class _SignFormState extends State<CreatorSignForm> {
                   setState(() {
                     user= UserCredential.user;
                   });
-                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UserVibe()));
                 });
 
               }

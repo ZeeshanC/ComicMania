@@ -1,4 +1,6 @@
-import 'package:ComicMania/screens/accountpage/accountpage.dart';
+//import 'package:ComicMania/screens/accountpage/User_Profile.dart';
+//import 'package:ComicMania/screens/accountpage/accountpage.dart';
+import 'package:ComicMania/screens/creator_upload/upload.dart';
 import 'package:ComicMania/screens/notification/notification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class Body extends StatelessWidget {
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
             press: () async {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> UserVibe()));
             },
           ),
           ProfileMenu(

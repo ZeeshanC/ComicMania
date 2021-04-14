@@ -1,5 +1,7 @@
 import 'package:ComicMania/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../chap2.dart';
 class chap1 extends StatelessWidget {
   static String routeName='/chap1';
   List a =[
@@ -48,7 +50,7 @@ class chap1 extends StatelessWidget {
               ),
             ),
             FlatButton(
-                onPressed:()=> print("Next Chap"),
+                onPressed:()=> Navigator.push(context,MaterialPageRoute(builder: (context)=> chap2())),
                 child: Text('Next'))
           ],
         ),

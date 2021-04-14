@@ -1,4 +1,5 @@
 import 'package:ComicMania/constants.dart';
+import 'package:ComicMania/screens/comicss/solo/chap2.dart';
 import 'package:flutter/material.dart';
 import 'package:ComicMania/screens/comicss/solo/chap1/chap1.dart';
 class Comics extends StatelessWidget {
@@ -25,7 +26,7 @@ class Comics extends StatelessWidget {
           new InkWell(
             child: Text("Chapter 2"),
             onTap: (){
-              print("chap 2");
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> chap2()));
             },
           )
         ],
