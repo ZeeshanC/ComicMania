@@ -47,40 +47,40 @@ class ComicList extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.2,
                         child:  Card(
-                  margin: EdgeInsets.all(0),
-                  child: Column(
-                  children: <Widget>[
-                  ListTile(
-                  leading: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: (Solo.data()['photo'] != null)? Image.network(Solo.data()['photo']).image : Image.network('https://firebasestorage.googleapis.com/v0/b/comicmania-fc715.appspot.com/o/Comic1%2F001.png?alt=media&token=410da85b-a1f5-4c0c-9991-a76d0d9d662c').image,
-                  ),
-                  title: GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=> Comics()));
-                    },
-                      child: Text('${Solo.data()['Name']}',)
-                  ),
-                  subtitle: Text('${Solo.data()['desc']}'),
-                  ),
-                  ButtonBar(
-                  children: <Widget>[
-                    IconButton(onPressed: null, icon: Icon(Icons.favorite_border),
-                  alignment: Alignment(-60,0),
+                          margin: EdgeInsets.all(0),
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(
+                                leading: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: (Solo.data()['photo'] != null)? Image.network(Solo.data()['photo']).image : Image.network('https://firebasestorage.googleapis.com/v0/b/comicmania-fc715.appspot.com/o/Comic1%2F001.png?alt=media&token=410da85b-a1f5-4c0c-9991-a76d0d9d662c').image,
+                                ),
+                                title: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context,MaterialPageRoute(builder: (context)=> Comics()));
+                                    },
+                                    child: Text('${Solo.data()['Name']}',)
+                                ),
+                                subtitle: Text('${Solo.data()['desc']}'),
+                              ),
+                              ButtonBar(
+                                children: <Widget>[
+                                  IconButton(onPressed: null, icon: Icon(Icons.favorite_border),
+                                    alignment: Alignment(-60,0),
 
-                  ),
-                  IconButton(
-                  icon: Icon(Icons.add_comment),
-                  color: Colors.lightBlue,
-                  alignment: Alignment(-60, 0),
-                  onPressed: null,
-                  ),
-                  Solo.data()['photo']!= null ? IconButton(icon: Icon(Icons.book), onPressed: null,  color: Colors.black,
-                  alignment: Alignment(10,0),): null,
-                  ],
-                  )
-                    ],
-                  ),),),],);
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.add_comment),
+                                    color: Colors.lightBlue,
+                                    alignment: Alignment(-60, 0),
+                                    onPressed: null,
+                                  ),
+                                  Solo.data()['photo']!= null ? IconButton(icon: Icon(Icons.book), onPressed: null,  color: Colors.black,
+                                    alignment: Alignment(10,0),): null,
+                                ],
+                              )
+                            ],
+                          ),),),],);
                   return Card(
                     child: ListTile(
                       leading: Text('${Solo.data()['desc']}'),//Image.network(image.toString()), //Image('${Solo.data()['photo']}'),
