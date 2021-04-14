@@ -1,3 +1,4 @@
+import 'package:ComicMania/screens/creator_upload/upload.dart';
 import 'package:ComicMania/screens/login_success/login_success_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -67,7 +68,7 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
         UserCredential user;
         user.user.updateProfile(displayName: name);
         print("data sent");
-        Navigator.of(context).pushReplacementNamed(LoginSuccessScreen.routeName);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> UserVibe()));
       });
 
     } catch(error)
