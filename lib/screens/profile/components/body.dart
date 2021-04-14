@@ -23,7 +23,7 @@ class Body extends StatelessWidget {
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
             press: () async {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> UserVibe()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> null));
             },
           ),
           ProfileMenu(
