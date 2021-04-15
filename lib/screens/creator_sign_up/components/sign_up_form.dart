@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
 import 'package:ComicMania/components/default_button.dart';
 import 'package:ComicMania/components/form_error.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:provider/provider.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -17,6 +18,7 @@ class CreatorSignUpForm extends StatefulWidget {
 }
 final _formKey = GlobalKey<FormState>();
 class _SignUpFormState extends State<CreatorSignUpForm> {
+  TextEditingController _rPasswordController = new TextEditingController();
   static final RegExp nameRegExp = RegExp('[a-zA-Z]');
   String email;
   String password;
@@ -108,6 +110,21 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
             SizedBox(height: getProportionateScreenHeight(30)),
             buildPasswordFormField(),
             SizedBox(height: getProportionateScreenHeight(30)),
+            FlutterPwValidator(
+              controller: _rPasswordController,
+              minLength: 8,
+              uppercaseCharCount: 1,
+              numericCharCount: 2,
+              specialCharCount: 1,
+              successColor: kPrimaryColor,
+              width: 400,
+              height: 150,
+              onSuccess: (){
+                print("matched");
+                Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("Password is ok")));
+              },
+            ),
+            SizedBox(height: getProportionateScreenHeight(30)),
             buildConformPassFormField(),
             FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(40)),
@@ -160,6 +177,7 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
+      controller: _rPasswordController,
       onSaved: (newValue) => _authData['password'] = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {

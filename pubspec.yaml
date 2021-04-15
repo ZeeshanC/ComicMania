@@ -22,15 +22,15 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  firebase_analytics: ^7.1.1
+  firebase_analytics: ^8.0.0
   firebase: ^9.0.1
   firebase_storage: ^8.0.3
-  cloud_firestore: ^1.0.4
+  cloud_firestore: ^1.0.5
   firebase_core: ^1.0.3
   http_exception: ^0.2.1
   http: ^0.13.1
   firebase_auth: ^1.1.0
-  google_sign_in: ^5.0.1
+  google_sign_in: ^5.0.2
   shared_preferences: ^2.0.5
   flutter_signin_button: ^2.0.0
   adaptive_theme: ^2.1.1
@@ -38,6 +38,8 @@ dependencies:
   image_picker: ^0.7.4
   file_picker: ^3.0.1
   syncfusion_flutter_pdfviewer: ^19.1.56-beta
+  flutter_password_strength: ^0.1.6
+  flutter_pw_validator: ^1.2.1
   flutter:
     sdk: flutter
 
