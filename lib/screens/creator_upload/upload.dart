@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:ComicMania/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
@@ -8,13 +7,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
-class UserVibe extends StatefulWidget {
+class UserComic extends StatefulWidget {
+  static String routeName = "/upload";
   @override
-  _UserVibeState createState() => _UserVibeState();
+  _UserComicState createState() => _UserComicState();
 }
 
-class _UserVibeState extends State<UserVibe> {
+class _UserComicState extends State<UserComic> {
   String post;
   User user = FirebaseAuth.instance.currentUser;
   bool uploadedFile = false;

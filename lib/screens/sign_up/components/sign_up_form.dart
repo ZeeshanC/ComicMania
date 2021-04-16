@@ -115,7 +115,7 @@ class _SignUpFormState extends State<SignUpForm> {
               height: 150,
               onSuccess: (){
                 print("matched");
-                Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("Password is ok")));
+                //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("Password is ok")));
               },
             ),
             SizedBox(height: getProportionateScreenHeight(30)),

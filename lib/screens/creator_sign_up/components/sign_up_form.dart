@@ -59,21 +59,17 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
     _formKey.currentState.save();
 
     try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']).then((value) {
-        FirebaseFirestore.instance.collection('Creator').doc().set(
-            {
-              "name": name,
-              "email": _authData['email'],
-              "password":_authData['password'],
-            }
-        );
-        UserCredential user;
-        user.user.updateProfile(displayName: name);
-        print("data sent");
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> UserVibe()));
-      });
-
-    } catch(error)
+      UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']);
+      user.user.updateProfile(displayName: name);
+      FirebaseFirestore.instance.collection('Creator').doc().set(
+          {
+            "name": name,
+            "email": _authData['email'],
+            "password":_authData['password'],
+          }
+      ).then((value) => Navigator.of(context).pushReplacementNamed(UserComic.routeName));
+  }
+     catch(error)
     {
       print(error);
       var errorMessage = 'Authentication Failed. Please try again later.';
@@ -122,7 +118,7 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
               height: 150,
               onSuccess: (){
                 print("matched");
-                Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("Password is ok")));
+                //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("Password is ok")));
               },
             ),
             SizedBox(height: getProportionateScreenHeight(30)),

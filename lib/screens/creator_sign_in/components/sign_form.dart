@@ -89,7 +89,7 @@ class _SignFormState extends State<CreatorSignForm> {
                   setState(() {
                     user= UserCredential.user;
                   });
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UserVibe()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UserComic()));
                 });
 
               }

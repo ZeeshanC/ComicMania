@@ -1,5 +1,6 @@
 import 'package:ComicMania/screens/comicss/comic.dart';
 import 'package:ComicMania/screens/comicss/solo/chap1/chap1.dart';
+import 'package:ComicMania/screens/creator_upload/upload.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ComicMania/screens/cart/cart_screen.dart';
 import 'package:ComicMania/screens/complete_profile/complete_profile_screen.dart';
@@ -14,6 +15,7 @@ import 'package:ComicMania/screens/splash/splash_screen.dart';
 import 'package:ComicMania/screens/creator_sign_in/sign_in_screen.dart';
 import 'screens/sign_up/sign_up_screen.dart';
 import 'screens/creator_sign_up/sign_up_screen.dart';
+import 'screens/creator_upload/upload.dart';
 //import 'screens/home/components/categories.dart';
 // We use name route
 // All our routes will be available here
@@ -34,4 +36,5 @@ final Map<String, WidgetBuilder> routes = {
   //Zeeshan.routeName:(context)=>Zeeshan(),
   Comics.routeName:(context)=>Comics(),
   chap1.routeName:(context)=>chap1(),
+  UserComic.routeName:(context)=>UserComic(),
 };
