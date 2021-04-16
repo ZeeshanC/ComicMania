@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class UserVibe extends StatefulWidget {
@@ -26,22 +27,17 @@ class _UserVibeState extends State<UserVibe> {
   }
   final _formkey = GlobalKey<FormState>();
 
-  Future vibe() async{
-    DocumentReference ds = FirebaseFirestore.instance.collection('user_posts').doc(Timestamp.now().toDate().toString());
+  Future Comicupload() async{
+    DocumentReference ds = FirebaseFirestore.instance.collection('Creator').doc('my comics').collection('AoT').doc('Chapter 1');
     DocumentReference ds1 = FirebaseFirestore.instance.collection('user').doc(user.uid).collection('post').doc(Timestamp.now().toDate().toString());
     DocumentReference ds2 = FirebaseFirestore.instance.collection('user').doc(user.uid).collection('Comics').doc();
     if(uploadedFile == false )
     {
       Map <String, dynamic> userPost={
-        //'post': post,
         'time': Timestamp.now().toDate(),
-        //'user_name': user.displayName,
-        //'profile_picture' : user.photoURL,
-        //'uid': user.uid,
-        //'like': 0,
       };
       ds.set(userPost).whenComplete(() => print("Posted!"));
-      ds1.set(userPost).whenComplete(() => print("Saved in user's personal file"));
+      //ds1.set(userPost).whenComplete(() => print("Saved in user's personal file"));
     }
     else if(uploadedFile == true )
     {
@@ -55,40 +51,36 @@ class _UserVibeState extends State<UserVibe> {
       });
       print(downloadURL);
       Map <String, dynamic> userPost={
-        //'post': post,
         'time': Timestamp.now().toDate(),
-        //'user_name': user.displayName,
-        //'profile_picture' : user.photoURL,
         'uid': user.uid,
         'comicFile': downloadURL,
-        //'like': 0,
       };
 
-      ds.set(userPost).whenComplete(() => print("Posted with file!"));
-      ds1.set(userPost).whenComplete(() => print("Saved in user's personal file"));
-      ds2.set({
-        'comicFile': downloadURL,
-        'file_name': getComicFile.files.single.name,
-      }).whenComplete(() => print("Saved in user's Comicrepo"));
+      //ds.set(userPost).whenComplete(() => print("Posted with file!"));
+      //ds1.set(userPost).whenComplete(() => print("Saved in user's personal file"));
+      ds.set(userPost).whenComplete(() => print("Saved in user's Comicrepo"));
     }
 
   }
 
   checkUploadComic() async
   {
-    getComicFile = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['.pdf']);
-    if(getComicFile != null)
-    {
+    getComicFile = await FilePicker.platform.pickFiles(
+        type: FileType.custom, allowedExtensions: ['.pdf']);
+    if (getComicFile != null) {
       setState(() {
         uploadedFile = true;
       });
       print(getComicFile.files.single.path);
+      Fluttertoast.showToast(
+          msg: "File Uploaded ${getComicFile.files.single.path}");
     }
-    else
+    else {
       print("User failed to upload comic");
+      Fluttertoast.showToast(
+          msg: "Failed to ${getComicFile.files.single.path}");
+    }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +124,7 @@ class _UserVibeState extends State<UserVibe> {
             ),
             RaisedButton(
               onPressed: (){
-                vibe().then((value) => Navigator.pop(context));
+                Comicupload().then((value) => Navigator.pop(context));
               },
               child: Text("Upload"),
               color: kPrimaryColor,

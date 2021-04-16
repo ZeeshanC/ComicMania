@@ -75,6 +75,7 @@ class _SignUpFormState extends State<CreatorSignUpForm> {
 
     } catch(error)
     {
+      print(error);
       var errorMessage = 'Authentication Failed. Please try again later.';
       _showErrorDialog(errorMessage);
     }

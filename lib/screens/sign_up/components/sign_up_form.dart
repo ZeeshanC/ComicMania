@@ -58,25 +58,19 @@ class _SignUpFormState extends State<SignUpForm> {
     _formKey.currentState.save();
 
     try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']).then((value) {
+        UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _authData['email'],password: _authData['password']);
+      user.user.updateProfile(displayName: name);
         FirebaseFirestore.instance.collection('user').doc().set(
-          {
-            "name": name,
-            "email": _authData['email'],
-            "password":_authData['password'],
-          }
-        );
-        UserCredential user;
-        user.user.updateProfile(displayName: name);
-        print("data sent");
-        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-      });
-
-
+            {
+              "name": name,
+              "email": _authData['email'],
+              "password":_authData['password'],
+            }
+        ).then((value) => Navigator.of(context).pushReplacementNamed(HomeScreen.routeName));
     } catch(error)
     {
       var errorMessage = 'Authentication Failed. Please try again later.';
-      _showErrorDialog(errorMessage);
+      _showErrorDialog(error.toString());
     }
 
   }
