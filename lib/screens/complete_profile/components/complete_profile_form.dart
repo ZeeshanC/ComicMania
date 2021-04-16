@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
 import 'package:ComicMania/components/default_button.dart';
 import 'package:ComicMania/components/form_error.dart';
-import 'package:ComicMania/screens/otp/otp_screen.dart';
+//import 'package:ComicMania/screens/otp/otp_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -53,7 +53,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             text: "continue",
             press: () {
               if (_formKey.currentState.validate()) {
-                Navigator.pushNamed(context, OtpScreen.routeName);
+                //Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },
           ),
