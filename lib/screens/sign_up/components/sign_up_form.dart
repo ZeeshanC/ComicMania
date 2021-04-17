@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:ComicMania/components/custom_surfix_icon.dart';
 import 'package:ComicMania/components/default_button.dart';
 import 'package:ComicMania/components/form_error.dart';
-import 'package:flutter_password_strength/flutter_password_strength.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:provider/provider.dart';
 import '../../../constants.dart';
@@ -66,7 +65,9 @@ class _SignUpFormState extends State<SignUpForm> {
               "email": _authData['email'],
               "password":_authData['password'],
             }
-        ).then((value) => Navigator.of(context).pushReplacementNamed(HomeScreen.routeName));
+        ).then((value) {print(FirebaseAuth.instance.currentUser.uid);
+          Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+        });
     } catch(error)
     {
       //var errorMessage = 'Authentication Failed. Please try again later.';

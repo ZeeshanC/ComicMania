@@ -1,4 +1,5 @@
 import 'package:ComicMania/constants.dart';
+import 'package:ComicMania/screens/comicss/solo/chap3.dart';
 import 'package:flutter/material.dart';
 
 import 'chap1/chap1.dart';
@@ -58,7 +59,7 @@ class chap2 extends StatelessWidget {
                 children: [
                   FlatButton(onPressed: ()=> Navigator.push(context,MaterialPageRoute(builder: (context)=> chap1())), child: Text("Prev")),
                   FlatButton(
-                      onPressed:()=> print("Next Chap"),
+                      onPressed:()=>Navigator.push(context,MaterialPageRoute(builder: (context)=> chap3())),
                       child: Text('Next'))
                 ],
               ),

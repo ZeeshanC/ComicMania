@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: getProportionateScreenHeight(0)),
                 NoAccountText(),
               ],
             ),
