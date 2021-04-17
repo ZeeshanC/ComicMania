@@ -69,7 +69,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ).then((value) => Navigator.of(context).pushReplacementNamed(HomeScreen.routeName));
     } catch(error)
     {
-      var errorMessage = 'Authentication Failed. Please try again later.';
+      //var errorMessage = 'Authentication Failed. Please try again later.';
       _showErrorDialog(error.toString());
     }
 
